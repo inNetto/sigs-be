@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Anamnese extends Model
 {
     use HasFactory;
+
+    public function inscrito()
+    {
+        return $this->belongsTo(Inscrito::class);
+    }
 }

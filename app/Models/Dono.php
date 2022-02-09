@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Dono extends Model
 {
     use HasFactory;
+
+    public function nucleos()
+    {
+        return $this->hasMany(Nucleo::class);
+    }
 }

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Inscrito extends Model
 {
     use HasFactory;
+
+    public function nucleo()
+    {
+        return $this->belongsTo(Nucleo::class);
+    }
+
+    public function anamnese()
+    {
+        return $this->belongsTo(Anamnese::class);
+    }
 }
