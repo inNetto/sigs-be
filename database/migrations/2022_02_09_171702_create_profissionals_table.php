@@ -14,8 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('profissionals', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //$table->id();
+            //$table->timestamps();
+
+            $table->increments('id')->integer('id', 11);
+            $table->string('cpf', 11)->unique();
+            $table->string('nome', 45);
+            $table->integer('tipo');
+            $table->string('status', 20);
+            $table->unsignedInteger('nucleo_id');
+            $table->foreign('nucleo_id')->references('id')->on('nucleos');
+            
         });
     }
 

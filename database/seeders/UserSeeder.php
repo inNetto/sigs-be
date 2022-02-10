@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Inscrito;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class InscritoSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +14,8 @@ class InscritoSeeder extends Seeder
      */
     public function run()
     {
-        factory(Inscrito::class)->create([
-            'nome' => 'Thays'
+        factory(\App\Models\User::class)->create([
+            'email' => 'teste@gmail.com'
         ]);
     }
 }

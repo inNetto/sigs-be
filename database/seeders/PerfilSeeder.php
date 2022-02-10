@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Perfil;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,8 @@ class PerfilSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Perfil::class)->create([
+            'nome'=>'Thays'
+        ]);
     }
 }
