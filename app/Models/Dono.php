@@ -9,6 +9,10 @@ class Dono extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nome'
+    ];
+
     public function nucleos()
     {
         return $this->hasMany(Nucleo::class);

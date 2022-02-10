@@ -29,6 +29,12 @@ class Inscrito extends Model
 
     public function anamnese()
     {
-        return $this->belongsTo(Anamnese::class);
+        return $this->hasOne(Anamnese::class);
     }
+
+    public function endereco()
+    {
+        return $this->hasOne(Endereco::class);
+    }
+
 }
