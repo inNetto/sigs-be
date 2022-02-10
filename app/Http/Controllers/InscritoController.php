@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InscritoEnderecoResource;
 use App\Http\Resources\InscritoResource;
 use App\Models\Inscrito;
 use App\Http\Requests\StoreInscritoRequest;
 use App\Http\Requests\UpdateInscritoRequest;
+use App\Services\InscritoService;
 use Illuminate\Http\Response;
 
 class InscritoController extends Controller
@@ -27,10 +29,7 @@ class InscritoController extends Controller
      */
     public function create()
     {
-
        //
-
-
     }
 
     /**
@@ -41,9 +40,12 @@ class InscritoController extends Controller
      */
     public function store(StoreInscritoRequest $request)
     {
-       /*$inscrito = new Inscrito();
-       $inscrito->save($request->all());*/
-       return '$request';
+
+        $inscrito = new Inscrito();
+        $input = $request->validated();
+        $inscrito->fill($input);
+        $inscrito->save();
+        return new InscritoResource($inscrito);
     }
 
     /**

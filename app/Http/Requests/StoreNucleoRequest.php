@@ -13,7 +13,7 @@ class StoreNucleoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class StoreNucleoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'numero' => 'required|integer',
+            'nome' => 'required|string',
+            'bairro' => 'required|string',
+            'localizacao' => 'required|string',
+            'zona' => 'required|string',
+            'ap' => 'required|string',
+            'status' => 'required|string',
+            'observacao' => 'required|string',
         ];
     }
 }

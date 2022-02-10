@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreNucleoRequest;
+use App\Http\Resources\DonoResource;
+use App\Http\Resources\NucleoResource;
 use App\Models\Dono;
 use App\Http\Requests\StoreDonoRequest;
 use App\Http\Requests\UpdateDonoRequest;
@@ -36,7 +39,11 @@ class DonoController extends Controller
      */
     public function store(StoreDonoRequest $request)
     {
-        //
+        $dono = new Dono();
+        $input = $request->validated();
+        $dono->fill($input);
+        $dono->save();
+        return new DonoResource($dono);
     }
 
     /**
@@ -82,5 +89,13 @@ class DonoController extends Controller
     public function destroy(Dono $dono)
     {
         //
+    }
+
+    public function addNucleo(Dono $dono, StoreNucleoRequest $request){
+
+        $input = $request->validated();
+        $nucleo = $dono->nucleos()->create($input);
+
+        return new NucleoResource($nucleo);
     }
 }

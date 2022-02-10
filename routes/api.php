@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DonoController;
+use App\Http\Controllers\NucleoController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\InscritoController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('inscritos')->group(function() {
-    Route::post('', [InscritoController::class, 'store']);
-});
+Route::post('nucleos', [NucleoController::class, 'addInscrito']);
+Route::post('nucleos', [NucleoController::class, 'store']);
+
+
+Route::post('inscritos', [InscritoController::class, 'store']);
+Route::post('donos', [DonoController::class, 'store']);
 
 
 

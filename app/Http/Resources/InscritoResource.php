@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Endereco;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class InscritoResource extends JsonResource
@@ -25,6 +26,7 @@ class InscritoResource extends JsonResource
             'sexo'=> (string)$this->sexo,
             'cpf'=> (string)$this->cpf,
             'documento_alternativo'=> (string)$this->documento_alternativo,
+            'endereco' => Endereco::with($this->whenLoaded('endereco'))
         ];
     }
 }

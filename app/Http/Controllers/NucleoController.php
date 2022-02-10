@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreInscritoRequest;
+use App\Http\Requests\StoreProfissionalRequest;
+use App\Http\Resources\InscritoResource;
+use App\Http\Resources\NucleoResource;
+use App\Http\Resources\ProfissionalResource;
+use App\Models\Dono;
 use App\Models\Nucleo;
 use App\Http\Requests\StoreNucleoRequest;
 use App\Http\Requests\UpdateNucleoRequest;
@@ -36,7 +42,11 @@ class NucleoController extends Controller
      */
     public function store(StoreNucleoRequest $request)
     {
-        //
+        $nucleo = new Nucleo();
+        $input = $request->validated();
+        $nucleo->fill($input);
+        $nucleo->save();
+        return new NucleoResource($nucleo);
     }
 
     /**
@@ -82,5 +92,21 @@ class NucleoController extends Controller
     public function destroy(Nucleo $nucleo)
     {
         //
+    }
+
+    public function addInscrito(Nucleo $nucleo, StoreInscritoRequest $request){
+
+        $input = $request->validated();
+        $inscrito = $nucleo->inscritos()->create($input);
+
+        return new InscritoResource($inscrito);
+    }
+
+    public function addProfissional(Nucleo $nucleo, StoreProfissionalRequest $request){
+
+        $input = $request->validated();
+        $profissional = $nucleo->profissionais()->create($input);
+
+        return new ProfissionalResource($profissional);
     }
 }

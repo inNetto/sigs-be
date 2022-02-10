@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProfissionalResource;
 use App\Models\Profissional;
 use App\Http\Requests\StoreProfissionalRequest;
 use App\Http\Requests\UpdateProfissionalRequest;
@@ -47,7 +48,7 @@ class ProfissionalController extends Controller
      */
     public function show(Profissional $profissional)
     {
-        //
+        return new ProfissionalResource($profissional);
     }
 
     /**

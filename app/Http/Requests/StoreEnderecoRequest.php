@@ -24,7 +24,10 @@ class StoreEnderecoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cep' => 'required|integermax|:30',
+            'rua' => 'required|string',
+            'bairro' => 'required|string',
+            'municipio' => 'required|string',
         ];
     }
 }

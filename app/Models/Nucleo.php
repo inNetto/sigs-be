@@ -9,6 +9,17 @@ class Nucleo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'numero',
+        'nome',
+        'bairro',
+        'localizacao',
+        'zona',
+        'ap',
+        'status',
+        'observacao'
+    ];
+
     public function inscritos()
     {
         return $this->hasMany(Inscrito::class);
