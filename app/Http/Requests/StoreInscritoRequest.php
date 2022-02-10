@@ -13,7 +13,7 @@ class StoreInscritoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class StoreInscritoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required|string',
+            'estado_civil' => 'required|string',
+            'escolaridade' => 'required|string',
+            'profissao' => 'required|string',
+            'telefone' => 'required|string',
+            'data_nascimento' => 'required|string',
+            'cor' => 'required|string',
+            'sexo' => 'required|string',
+            'cpf' => 'string|max:8',
+            'documento_alternativo' => 'string',
         ];
     }
 }
