@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('donos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //$table->id();
+           // $table->timestamps();
+
+            $table->increments('id')->integer('id', 11);
+            $table->string('nome', 45)->unique();
         });
     }
 
