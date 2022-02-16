@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Nucleo extends Model
 {
@@ -17,20 +19,20 @@ class Nucleo extends Model
         'zona',
         'ap',
         'status',
-        'observacao'
+        'observacao',
     ];
 
-    public function inscritos()
+    public function inscritos(): HasMany
     {
         return $this->hasMany(Inscrito::class);
     }
 
-    public function profissionais()
+    public function profissionais(): HasMany
     {
         return $this->hasMany(Profissional::class);
     }
 
-    public function dono()
+    public function dono():BelongsTo
     {
         return $this->belongsTo(Dono::class);
     }

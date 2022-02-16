@@ -8,6 +8,7 @@ use App\Http\Resources\NucleoResource;
 use App\Models\Dono;
 use App\Http\Requests\StoreDonoRequest;
 use App\Http\Requests\UpdateDonoRequest;
+use App\Services\DonoService;
 
 class DonoController extends Controller
 {
@@ -18,7 +19,7 @@ class DonoController extends Controller
      */
     public function index()
     {
-        //
+        return DonoResource::collection(\App\Models\Dono::all());
     }
 
     /**
@@ -50,11 +51,12 @@ class DonoController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Dono  $dono
-     * @return \Illuminate\Http\Response
+     * @return DonoResource
      */
     public function show(Dono $dono)
     {
-        //
+        $dono->load('nucleos');
+        return new DonoResource($dono);
     }
 
     /**
@@ -77,7 +79,11 @@ class DonoController extends Controller
      */
     public function update(UpdateDonoRequest $request, Dono $dono)
     {
-        //
+        $input = $request->validated();
+        $dono->fill($input);
+        $dono->save();
+
+       return new DonoResource($dono->refresh());
     }
 
     /**
@@ -88,7 +94,13 @@ class DonoController extends Controller
      */
     public function destroy(Dono $dono)
     {
-        //
+        $service = new DonoService();
+        $id = $dono->getKey();
+        if($service->dontDeleteDonoWithId1($id)){
+            // Implementar a atualização dos núcleos para "dono_id" = 1 antes de deletar o dono
+            $service->updateNucleoBeforeDeleteDono($id);
+        }
+
     }
 
     public function addNucleo(Dono $dono, StoreNucleoRequest $request){

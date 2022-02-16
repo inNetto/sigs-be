@@ -15,14 +15,15 @@ class NucleoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'numero' => (integer)$this->id,
+            'numero' => (integer)$this->numero,
             'nome' => (string)$this->nome,
             'bairro' => (string)$this->bairro,
             'localizacao' => (string)$this->localizacao,
             'zona' => (string)$this->zona,
             'ap' => (string)$this->ap,
             'status'=> (string)$this->status,
-            'observacao'=> (string)$this->observacao
+            'observacao'=> (string)$this->observacao,
+            'profissionais' => ProfissionalResource::collection($this->whenLoaded('profissionais'))
         ];
     }
 }

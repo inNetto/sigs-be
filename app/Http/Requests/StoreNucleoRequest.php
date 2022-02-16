@@ -31,7 +31,7 @@ class StoreNucleoRequest extends FormRequest
             'zona' => 'required|string',
             'ap' => 'required|string',
             'status' => 'required|string',
-            'observacao' => 'required|string',
+            'observacao' => 'required|string'
         ];
     }
 }

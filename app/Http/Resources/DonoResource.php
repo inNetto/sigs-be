@@ -15,7 +15,8 @@ class DonoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'nome' => (string)$this->nome
+            'nome' => (string)$this->nome,
+            'nucleos' => NucleoResource::collection($this->whenLoaded('nucleos'))
         ];
     }
 }

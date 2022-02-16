@@ -14,6 +14,11 @@ class ProfissionalResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'cpf' => (string)$this->cpf,
+            'nome' => (string)$this->nome,
+            'tipo' => (integer)$this->tipo,
+            'status' => (string)$this->status,
+        ];
     }
 }

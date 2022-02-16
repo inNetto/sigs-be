@@ -17,12 +17,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('nucleos', [NucleoController::class, 'addInscrito']);
-Route::post('nucleos', [NucleoController::class, 'store']);
+Route::prefix('donos')->group(function() {
+    Route::get('', [DonoController::class, 'index']);
+    Route::get('{dono}', [DonoController::class, 'show']);
+    Route::put('{dono}', [DonoController::class, 'update']);
+    Route::delete('{dono}', [DonoController::class, 'destroy']);
+    Route::post('', [DonoController::class, 'store']);
+    Route::post('{dono}/nucleos', [DonoController::class, 'addNucleo']);
+});
+
+Route::prefix('nucleos')->group(function() {
+    Route::get('', [NucleoController::class, 'index']);
+    Route::get('{nucleo}', [NucleoController::class, 'show']);
+    Route::put('{nucleo}', [NucleoController::class, 'update']);
+    Route::delete('{nucleo}', [NucleoController::class, 'destroy']);
+    Route::post('', [NucleoController::class, 'store']);
+    Route::post('{nucleo}/inscritos', [NucleoController::class, 'addInscrito']);
+    Route::post('{nucleo}/profissionais', [NucleoController::class, 'addProfissional']);
+
+});
 
 
-Route::post('inscritos', [InscritoController::class, 'store']);
-Route::post('donos', [DonoController::class, 'store']);
 
 
 

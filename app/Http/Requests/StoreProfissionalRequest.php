@@ -13,7 +13,7 @@ class StoreProfissionalRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreProfissionalRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cpf' => 'string|max:11',
+            'nome' => 'required|string',
+            'tipo' => 'required|integer',
+            'status' => 'required|string'
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Dono extends Model
 {
@@ -13,7 +14,7 @@ class Dono extends Model
         'nome'
     ];
 
-    public function nucleos()
+    public function nucleos():HasMany
     {
         return $this->hasMany(Nucleo::class);
     }

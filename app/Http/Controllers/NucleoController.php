@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreInscritoRequest;
 use App\Http\Requests\StoreProfissionalRequest;
+use App\Http\Resources\DonoResource;
 use App\Http\Resources\InscritoResource;
 use App\Http\Resources\NucleoResource;
 use App\Http\Resources\ProfissionalResource;
@@ -11,6 +12,8 @@ use App\Models\Dono;
 use App\Models\Nucleo;
 use App\Http\Requests\StoreNucleoRequest;
 use App\Http\Requests\UpdateNucleoRequest;
+use App\Services\InscritoService;
+use http\Client\Request;
 
 class NucleoController extends Controller
 {
@@ -21,7 +24,7 @@ class NucleoController extends Controller
      */
     public function index()
     {
-        //
+        return NucleoResource::collection(\App\Models\Nucleo::all());
     }
 
     /**
@@ -57,7 +60,8 @@ class NucleoController extends Controller
      */
     public function show(Nucleo $nucleo)
     {
-        //
+        $nucleo->load('profissionais');
+        return new NucleoResource($nucleo);
     }
 
     /**
@@ -94,10 +98,12 @@ class NucleoController extends Controller
         //
     }
 
-    public function addInscrito(Nucleo $nucleo, StoreInscritoRequest $request){
+    public function addInscrito(Nucleo $nucleo, \Illuminate\Http\Request $request){
 
-        $input = $request->validated();
-        $inscrito = $nucleo->inscritos()->create($input);
+        $input = $request->all();
+
+        $service = new InscritoService();
+        $inscrito = $service->teste($nucleo, $input);
 
         return new InscritoResource($inscrito);
     }
