@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Endereco;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,5 +16,8 @@ class EnderecoSeeder extends Seeder
     public function run()
     {
         //
+        Endereco::factory()
+            ->count(50)
+            ->create();
     }
 }

@@ -18,6 +18,7 @@ class AnamneseFactory extends Factory
     {
         return [
             //
+            'inscrito_id' => '1',
         ];
     }
 }

@@ -13,4 +13,6 @@ class Profissional extends Model
     {
         return $this->belongsTo(Nucleo::class);
     }
+    public $timestamps = false;
+
 }

@@ -13,4 +13,6 @@ class Dono extends Model
     {
         return $this->hasMany(Nucleo::class);
     }
+    public $timestamps = false;
+
 }

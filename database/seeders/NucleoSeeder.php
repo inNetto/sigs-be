@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Nucleo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,5 +16,8 @@ class NucleoSeeder extends Seeder
     public function run()
     {
         //
+        Nucleo::factory()
+        ->count(50)
+        ->create();
     }
 }

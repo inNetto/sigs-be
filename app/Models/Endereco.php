@@ -13,4 +13,6 @@ class Endereco extends Model
     {
         return $this->belongsTo(Inscrito::class);
     }
+    public $timestamps = false;
+
 }
