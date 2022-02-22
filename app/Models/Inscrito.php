@@ -18,4 +18,6 @@ class Inscrito extends Model
     {
         return $this->belongsTo(Anamnese::class);
     }
+    public $timestamps = false;
+
 }

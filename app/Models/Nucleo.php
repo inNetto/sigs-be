@@ -23,4 +23,6 @@ class Nucleo extends Model
     {
         return $this->belongsTo(Dono::class);
     }
+    public $timestamps = false;
+
 }

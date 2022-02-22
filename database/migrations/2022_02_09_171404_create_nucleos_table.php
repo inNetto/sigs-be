@@ -14,8 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('nucleos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        //$table->increments('id')->integer('id', 11);
+        //$table->timestamps();
+
+        $table->increments('id')->integer('id', 11);
+        $table->integer('numero');
+        $table->string('nome', 45)->unique();
+        $table->string('bairro', 45);
+        $table->string('localizacao', 45);
+        $table->string('zona', 10);
+        $table->string('ap', 3);
+        $table->string('status', 25);
+        $table->string('observacao', 50);
+        $table->unsignedInteger('dono_id')->default('1');
+        $table->foreign('dono_id')->references('id')->on('donos');
+
         });
     }
 
