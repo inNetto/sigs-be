@@ -17,8 +17,11 @@ return new class extends Migration
             //$table->id();
            // $table->timestamps();
 
-            $table->increments('id')->integer('id', 11);
+            //$table->increments('id')->integer('id', 15);
+            $table->integer('id', 15);
             $table->string('nome', 45)->unique();
+
+            $table->timestamps();
         });
     }
 

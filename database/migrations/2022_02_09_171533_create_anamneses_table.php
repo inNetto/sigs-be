@@ -17,9 +17,12 @@ return new class extends Migration
            // $table->id();
             //$table->timestamps();
 
-            $table->increments('id')->integer('id', 11);
-            $table->unsignedInteger('inscrito_id');
+            //$table->increments('id')->integer('id', 11);
+            $table->integer('id', 15);
+            $table->integer('inscrito_id');
             $table->foreign('inscrito_id')->references('id')->on('inscritos');
+            $table->timestamps();
+
 
         });
     }

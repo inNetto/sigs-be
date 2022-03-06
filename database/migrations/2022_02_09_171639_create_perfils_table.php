@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('perfils', function (Blueprint $table) {
             //$table->id();
             //$table->timestamps();
-            $table->increments('id')->integer('id', 11);
+            //$table->increments('id')->integer('id', 11);
+            $table->integer('id', 15);
             $table->string('nome', 45)->nullable();
+            $table->timestamps();
+
         });
     }
 

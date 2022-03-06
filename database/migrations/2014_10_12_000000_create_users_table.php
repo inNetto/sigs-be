@@ -22,8 +22,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             */
-            $table->increments('id')->integer('id', 11);
+            //$table->increments('id')->integer('id', 11);
+            $table->integer('id', 15);
             $table->string('perfil_id', 45)->nullable();
+            $table->timestamps();
+
 
         });
     }
